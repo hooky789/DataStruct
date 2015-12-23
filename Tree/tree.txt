@@ -1,0 +1,241 @@
+树和二叉树
+
+1、树的定义
+    树（Tree）是n个结点（元素的有限集合）。当n=0时，称这棵树为空树。
+在非树T中：
+（1）有且只有一个特殊的结点称为树的根结点（root），根结点没有前驱结点。
+（2）当n>1时，除了根结点之外的其余的结点又被分成m个互不相交的子集。每个
+子集本身又是一棵树，这些树称为根结点的子树。
+
+2、相关的术语
+
+（1）结点的度、树的度
+结点的度：结点所拥有所有子树的个数;
+树的度：树中各结点度的最大值。
+
+（2）叶子结点、分支结点
+叶子结点：度为0的结点称为叶子结点;
+分支结点：度不为0的结点称为分支结点。
+
+（3）孩子、兄弟、双亲
+孩子：树中一个结点的子树的根结点称为这个结点的孩子;
+双亲：上述说法相应的称为双亲;
+兄弟：具有同一个双亲的孩子结点互称兄弟。
+
+（4）祖先、子孙
+一个结点的所有子树中的结点称之为该节点的子孙结点，结点的祖先是从根结点
+到该结点所经分支上的所有结点。
+
+（5）结点的层数、树的深度
+树既是一种递归结构也是一个层次结构，树中的每一个结点都处在一定的层次上。
+树的深度：树中所有最大结点的最大层数称为树的深度。
+
+（6）堂兄弟
+双亲在同一层的结点互为堂兄弟。
+
+（7）有序树、无序树
+如果一棵树中结点的各个子树从左到右是有次序的，即若交换了某个结点各
+子树的相对位置则构成不同的树，称这棵树为有序树。
+反之，则称为无序树。
+
+（7）森林
+m（m>0）棵不相交的树的集合称为森林。自然界中树和森林是不同的概念。
+但是在数据结构中，任何一棵树，删去根节点就变成森林了。
+
+3、树的抽象数据类型
+
+ADT Tree
+{
+	Data:
+		树是由一个根结点和若干棵子树构成的.
+	    树中结点具有相同数据类型及层次结构.
+	
+	Operation:
+		
+		//操作结果：构造一棵空树
+	    InitTree(&T)
+		
+		//初始条件：串S是以广义表形式表示的树
+		//操作结果：按照S构造一棵树
+		CreateTree(&T,S)
+		
+		//初始条件：树T存在，Visit是对结点操作的应用函数
+		//操作结果：按某种次序对T的每个结点调用函数Visit()
+		//一次且至多一次，一旦visit()失败，则操作失败.
+		OrderTree(T,Visit())
+		
+		//初始条件：树T存在
+		//操作结果：在树T中查找元素e，若查找成功，返回true
+		//否则返回false
+		SearchTree(T,&e)
+		
+		//初始条件：树T存在
+		//操作结果：以某种形式输出树T
+		PrintTree(T)
+		
+		//初始条件：树T存在
+		//操作结果：求树T的深度
+		TreeDepth(T)
+		
+		//初始条件：树T存在
+		//操作结果：销毁树T
+		DestroyTree(&T)
+}
+
+
+4、树的存储结构
+树中节点之间的逻辑关系都是父子关系，即通过双亲和孩子来刻画结点之间的
+逻辑关系，因而树的存储结构要求不仅存储各结点的数据信息，还要唯一地反
+映树中各结点之间的逻辑关系--父子关系，其关键是如何表示结点的双亲和孩
+子。根据结点中指针域所指的对象可分为双亲表示方法，孩子表示法和双亲孩
+子表示法。
+（1）双亲表示法
+a>数组表示
+
+#define MAX_TREE_SIZE 100   			//树中结点的最大个数
+typedef struct
+{
+	TElemType data;						//结点的值
+	int parent;							//结点的双亲在数组中的下标
+}pTreeNode;                 			//结点类型
+
+pTreeNode pTree[MAX_TREE_SIZE];
+
+b>链表表示
+因为树中除了根节点以外，每一个结点只有一个双亲，
+所以这种表示方法得到的结果是一个单链表
+#define MAX_TREE_SIZE 100   			//树中结点的最大个数
+typedef struct
+{
+	TElemType data;						//结点的值
+	pTreeNode *parent;					//结点的双亲指针
+}pTreeNode;                 			//结点类型
+
+（2）孩子表示法
+a>数组表示
+#define MAX_SON_SIZE 3      			//树的度
+typedef struct
+{
+	TElemType data;						//结点的值
+	int Child[MAX_SON_SIZE];			//结点的孩子在数组中的下标
+}CTreeNode;								//数组元素类型
+
+CTreeNode CTree[MAX_TREE_SIZE];
+
+b>链表表示
+typedef struct CTNode
+{
+	TElemType data; 					//结点的值
+	struct CTNode *child[MAX_SON_SIZE];	//结点的指针域，指向孩子结点
+}CTNode,*CTree;							//结点的类型
+
+c>左孩子右兄弟表示法。
+typedef struct LRTNode
+{
+   TElemType data;						//结点的值
+   struct LRTNode *lchild;				//左孩子指针
+   struct LRTNode *rsibling;			//右兄弟指针
+}LRTNode, *LRTree;						//结点的类型
+
+（3）双亲孩子表示法
+a>数组表示
+typedef struct
+{
+	TElemType data;						//结点的值
+	int parent;							//结点的双亲在数组中的下标
+	int child[MAX_SON_SIZE];			//结点的孩子在数组中的下标
+}PCTreeNode;     						//数组元素的类型
+
+b>链表表示法
+typedef struct pCTNode					
+{	
+	TElemType data;						//结点的值
+	struct pCTNode *parent;				//结点的双亲指针	
+	struct pCTNode *child[MAX_SON_SIZE];//结点的孩子指针
+}PCTNode,*pCTree;  						//结点类型
+
+c>双亲数组孩子链表表示法
+
+typedef struct Node
+{
+	int child;							//孩子结点在数组中的下标
+	struct Node *next;					//孩子链表中的结点类型
+}CNode;
+
+typedef struct 
+{
+	TElemType data;						//结点的值
+	int parent;							//结点的双亲在数组中的下标
+	CNode *Childlink;					//指向孩子链表
+}PCLink;								//数组元素的类型
+
+
+5、树的基本操作实现
+树的相关操作有很多，不同的存储结构表示，其操作也有所不同，下面以
+孩子链表表示法实现树的几个基本操作。
+孩子链表表示法：
+typedef struct CTNode
+{
+	TElemType data; 					//结点的值
+	struct CTNode *child[MAX_SON_SIZE];	//结点的指针域，指向孩子结点
+}CTNode,*CTree;							//结点的类型
+
+
+（1）初始化操作
+输的初始化中就是要去建立一棵空树，并由指针T指向其根节点。
+void InitTree(CTree &T)
+{
+	T = NULL;
+}
+
+（2）创建树操作
+创建一棵树就是要在内存中存储一个树的结构。用孩子链表表示方法中就是在内
+存中生成一个孩子链表。因为树是一种层次结构，创建树的操作首先需要确定输
+入树的方法，然后再写出相应的算法。不同的输入方法，树的创建方法也不相同。
+如果采用广义表的形式进行输入：
+
+使用广义表表示一棵树：A(B(D,E(H,I),F),D(G))
+
+实现代码：
+void CreateTree(CTree &T,char *S)
+{
+	CTree stack[MS],p;
+	int i=0,d[MS];
+	int top = -1;
+	while (S[i])
+	{
+		switch(S[i])
+		{
+		case ' ': break;
+		case '('://ѹջ
+			top++;
+			stack[top] = p;
+			d[top] = 0;
+			break;
+		case ')'://կջ
+			top--;
+			break;
+		case ',':
+			d[top]++;
+			break;
+		default:
+			if (!(p=(CTree)malloc(sizeof(CTNode))))
+				exit(1);
+			p->data = S[i];
+			for (int i = 0;i < MAX_SON_SIZE;i++)
+				p->child[i] = NULL;
+			if (!T)
+				T = p;
+			else
+				stack[top]->child[d[top]] = p;
+			break;
+		}
+		i++;
+	}
+}
+
+
+
+
+
+
