@@ -1,2 +1,8 @@
-# DataStruct
-DataStruct Example Code
+# 《数据结构》学习源码C/C++实现
+##1、线性表
+##2、链表
+##3、栈和队列
+##4、树
+##5、二叉树
+
+
