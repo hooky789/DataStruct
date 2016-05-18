@@ -340,7 +340,6 @@ void PrintGraph_M(MGraph G)
 				}
 			}
 		}
-
 	}
 }
 
@@ -353,3 +352,5 @@ void DestroyGraph_M(MGraph &G)
 		DeletVex_M(G,G.vexs[i]);
 	}
 }
+
+
