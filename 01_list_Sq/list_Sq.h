@@ -31,3 +31,5 @@ void ListTraverse_Sq(SqList L);
 bool GetElem_Sq(SqList L,int i,ElemType &e);
 
 #endif
+
+

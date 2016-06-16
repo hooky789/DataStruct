@@ -4,20 +4,22 @@
 
 using namespace std;
 
-void main()
+int main()
 {
 	SqList mylist;
-	int i,x,a[] = {6,8,16,2,34,56,7,10,22,45};
+	int i, a[] = {6,8,16,2,34,56,7,10,22,45};
 	InitList_Sq(mylist,50,10);
 	for (i=0;i<10;i++)
 	{
 		if (!ListInsert_Sq(mylist,i,a[i]))
 		{
-			cout<<"插入失败"<<endl;
-			return;
+			cout<< " Insert Error! "<<endl;
+			return -1;
 		}
 	}
-	cout<<"当前前的顺序表为：";
+	cout<<"The current linear list is: ";
 	ListTraverse_Sq(mylist);
-	system("pause");
+	return 0;
 }
+
+
