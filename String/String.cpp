@@ -1,6 +1,8 @@
 #include "String.h"
 #include <iostream>
 #include <iomanip>
+#include <stdlib.h>
+
 
 using namespace std;
 

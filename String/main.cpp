@@ -4,7 +4,7 @@
 
 using namespace std;
 
-void main()
+int main()
 {
 	DSqString S1,S2,S3,S4;
 	DSqString sub;
@@ -19,15 +19,15 @@ void main()
 	StrTravers_Sq(S3);
 	StrTravers_Sq(S4);
 
-	cout<<"串S1长度："<<endl<<StrLength_Sq(S1)<<endl;
-	cout<<"串1和串2比较："<<endl<<StrCompare_Sq(S1,S2)<<endl;
+	cout<<"string \"S1\" length: "<< endl<<StrLength_Sq(S1)<<endl;
+	cout<<"compare S1 to S2" <<endl<<StrCompare_Sq(S1,S2)<<endl;
 	StrConcat_Sq(S1,S2);
-	cout<<"字符串S2粘贴到S1："<<endl;
+	cout<<"S2 string concat to S1: "<<endl;
 	StrTravers_Sq(S1);
-	cout<<"S3位置为1长度为5的子串："<<endl;
+	cout<<"S3 sub String is :"<<endl;
 	SubString_Sq(S3,sub,1,5);
 	StrTravers_Sq(sub);
-	cout<<"字符串S1中查找S2："<<endl;
+	cout<<"Find S2 in S1: "<<endl;
 	if(Index_Sq(S1,S2,pos))
 	{
 		cout<<pos<<endl;
@@ -38,12 +38,12 @@ void main()
 	}
 	StrInsert_Sq(S3,0,S2);
 	StrTravers_Sq(S3);
-	cout<<"子串删除"<<endl;
+	cout<<"delete sub String "<<endl;
 	StrDelet_Sq(S3,0,16);
 
-	cout<<"字串替换"<<endl;
+	cout<<"replace string " <<endl;
 	StrReplace_Sq(S2,S1,S3);
-	cout<<"操作后字串:"<<endl;
+	cout<<"after opration " <<endl;
 	StrTravers_Sq(S1);
 	StrTravers_Sq(S2);
 	StrTravers_Sq(S3);
@@ -52,5 +52,6 @@ void main()
 	DestroyString_Sq(S2);
 	DestroyString_Sq(S3);
 	DestroyString_Sq(S4);
-	//system("pause");
+	return 0;
 }
+
