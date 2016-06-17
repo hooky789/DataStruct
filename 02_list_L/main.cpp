@@ -14,21 +14,23 @@ int main()
 	{
 		if (!ListInsert_L(head,i,a[i-1]))
 		{
-			cout<<"插入失败！"<<endl;
-			system("pause");
+			cout<<"Insert Elements error! "<<endl;
+			//system("pause");
 			return 0;
 		}
 	}
-	cout<<"删除前的链表为："<<endl;
+	cout<<"String before deleted: "<<endl;
 	ListTraverse_L(head);
-	cout<<"当前链表长度为："<<ListLengh_L(head)<<endl;
-	cout<<"删除第4个元素"<<endl;
+	cout<<"List length: "<<ListLengh_L(head)<<endl;
+	cout<<"Delete the 4th element: "<<endl;
 	ListDelete_L(head,4,x);
-	cout<<"被删除的元素是:"<<x<<endl;
-	cout<<"删除后的链表为："<<endl;
+	cout<<"Deleted elemente: "<<x<<endl;
+	cout<<"String after deleted: "<<endl;
 	ListTraverse_L(head);
-	cout<<"当前链表长度为："<<ListLengh_L(head)<<endl;
+	cout<<"List length: "<<ListLengh_L(head)<<endl;
 	DestroyList_L(head);
-	system("pause");
+	//system("pause");
 	return 0;
 }
+
+

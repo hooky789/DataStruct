@@ -1,6 +1,8 @@
 #include "list_L.h"
 #include "iostream"
 #include "iomanip"
+#include <stdlib.h>
+
 using namespace std;
 
 void InitList_L(LinkList &L)
@@ -12,6 +14,7 @@ void InitList_L(LinkList &L)
 	}
 	L->next = NULL;							//链表的下一节点为空
 }
+
 
 int ListLengh_L(LinkList L)
 {
@@ -25,6 +28,7 @@ int ListLengh_L(LinkList L)
 	}
 	return k;
 }
+
 
 bool ListInsert_L(LinkList &L,int i,ElemType e)
 {
