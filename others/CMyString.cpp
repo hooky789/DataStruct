@@ -49,7 +49,10 @@ CMyString::~CMyString()
     m_pData = NULL;
 }
 
+
 /*
+//考虑：如果在delete之后，分配空间的时候出现内存不够的时候会出现什么情况？
+//之前的数据被删除了，然而后面的数据也没有拷贝成功。
 CMyString& CMyString::operator=(const CMyString& str)
 {
     if(this == &str)
@@ -68,7 +71,7 @@ CMyString& CMyString::operator=(const CMyString& str)
 {
     if(this != &str)
     {
-        CMyString tmp(str.m_pData);     //构造一个临时的对象
+        CMyString tmp(str.m_pData);     //构造一个临时的对象，临时对象会在该函数退出的时候调用析构函数销毁
         char* p = this->m_pData;        //交换两者的数据域
         this->m_pData = tmp.m_pData;
         tmp.m_pData = p;
