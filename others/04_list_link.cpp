@@ -67,12 +67,55 @@ void RemoveNode(ListNode ** pHead, int value)
 }
 
 
+#include <stack>
+
+//逆序打印链表
+void ReversPrint(ListNode **pHead)
+{
+	
+	stack<ListNode*> sk;
+	ListNode* pNode = *pHead;
+	while(pNode != NULL)
+	{
+		sk.push(pNode);
+		pNode = pNode->m_pNext;
+	}
+	
+	cout<< "ReversPrint :" << endl;
+	//打印并且出栈
+	while(!sk.empty())
+	{
+		cout << (sk.top())->m_nValue << endl;
+		sk.pop();
+	}
+	cout<<endl;
+}
+
+
+void Recur(ListNode **pHead)
+{
+	if(*pHead != NULL)
+	{
+		if((*pHead)->m_pNext != NULL)
+			Recur(&((*pHead)->m_pNext));
+		cout<< (*pHead)->m_nValue << endl;
+	}
+}
 
 int main()
 {	
 	ListNode* lt = NULL;
 	AddToTail(&lt, 10);
 	AddToTail(&lt, 20);
+	AddToTail(&lt, 11);
+	AddToTail(&lt, 41);
+	ReversPrint(&lt);
+	
+	cout<< "Recur" << endl;
+	Recur(&lt);
+	RemoveNode(&lt, 20);
+	ReversPrint(&lt);
+
 	return 0;
 }
 
