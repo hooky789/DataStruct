@@ -2,6 +2,9 @@
 
 using namespace std;
 
+/*
+* 快速排序的递归实现
+*/
 template<class T>
 void QuickSort(T a[], int l, int r)
 {
