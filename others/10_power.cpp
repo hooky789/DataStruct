@@ -8,6 +8,7 @@
 
 #include<iostream>
 #include<stdio.h>
+
 using namespace std;
 
 double Power(double base, int exponent)
@@ -15,16 +16,15 @@ double Power(double base, int exponent)
     double rt = base;
     unsigned int exp = 0;
 
-    if(base < 0.000001 && base > -0.000001 && exponent == 0)   //0^0
+    if(base < 0.000001 && base > -0.000001 && exponent == 0)    //0^0在数学上没有意义
         return 1.0;
 
-    if(exponent < 0)
+    if(exponent < 0)										    //
         exp = (unsigned int)(-exponent);
     else
         exp = (unsigned int)exponent;
 
-    for(int i=1; i<exp; ++i)
-    {
+    for(int i=1; i<exp; ++i){
         rt *= base;
     }
 
