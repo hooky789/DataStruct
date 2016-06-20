@@ -7,18 +7,46 @@
 ************************************************************************/
 
 #include<iostream>
+#include<string.h>
+#include<stdio.h>
 using namespace std;
 
 
 bool Increase(char *num)
 {
-    return true;    
+	int len = strlen(num);
+	int nTakeOver = 0;				     //进位
+
+	for(int i=len-1; i>=0; --i)
+	{
+		int nSum = num[i] - '0' + nTakeOver;
+		if(i == len - 1)
+			++nSum;
+
+		if(nSum >= 10)					//有进位
+		{
+			if(i == 0)					//i=0表示到达最高位，超过最大值了，需要退出
+				return true;
+			else
+			{
+				nSum -= 10;
+				nTakeOver = 1;
+				num[i] = '0' + nSum;
+			}
+		}
+		else							//没有进位
+		{
+			num[i] = '0' + nSum;
+			break;
+		}
+	}
+    return false;    
 }
 
 
 void  PrintNumbers(char *num)
 {
-
+	printf("%s\n", num);
 }
 
 
@@ -33,11 +61,13 @@ void PrintOne2N(int n)
     {
         PrintNumbers(numbers);
     }
+	delete[] numbers;
 }
 
 
 int main()
 {
+	PrintOne2N(3);
     return 0;
 }
 
