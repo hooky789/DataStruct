@@ -15,6 +15,17 @@
 using namespace std;
 //using namespace std::exception;
 
+int MinOrder(int *numbers, int index1, int index2)
+{
+    int rt = numbers[index1];
+    for(int i=index1; i<index2; ++i)
+    {
+        if(numbers[i] < rt)
+            rt = numbers[i];
+    }
+    return rt;
+}
+
 
 int Min(int *numbers, int len)
 {
@@ -36,7 +47,15 @@ int Min(int *numbers, int len)
             break;
         }
         indexMin = (index1 + index2)/2;
-        if(numbers[indexMin] > numbers[index2])
+        
+        //考虑这样的数字序列的问题 1 0 1 1 1
+        //或者1 1 1 0 1
+        //这样的序列有一个问题就是不能判断序列的增减，遇到这样的情况就只能去挨个遍历查找了
+        if(numbers[indexMin] == numbers[index1] && numbers[indexMin] == numbers[index2])
+            return MinOrder(numbers, index1, index2);
+
+        
+        if(numbers[indexMin] >= numbers[index2])
             index1 = indexMin;
         else if(numbers[indexMin] <= numbers[index2])
             index2 = indexMin;
@@ -44,10 +63,12 @@ int Min(int *numbers, int len)
     return numbers[indexMin];
 }
 
+
 int main()
 {
     int num[5] = {4,5,1,2,3};
-    cout<<Min(num,5)<<endl;
+    int num2[5] = {1,0,1,1,1};
+    cout<<Min(num2,5)<<endl;
     return 0;
 }
 
