@@ -1,7 +1,7 @@
 /*************************************************************************
 	> File Name: 11_One2N.cpp
-	> Author: 
-	> Mail: 
+	> Author: Robin
+	> Mail: chou_robin@163.com
 	> Created Time: 2016年06月20日 星期一 16时31分07秒
     > From: 剑指offer
 ************************************************************************/
@@ -10,7 +10,6 @@
 #include<string.h>
 #include<stdio.h>
 using namespace std;
-
 
 bool Increase(char *num)
 {
@@ -46,7 +45,13 @@ bool Increase(char *num)
 
 void  PrintNumbers(char *num)
 {
-	printf("%s\n", num);
+    int len = strlen(num);
+    int i = 0;
+    while(num[i] == '0')
+        ++i;
+    for(; i<len; ++i)
+        printf("%c", num[i]);
+    printf("\t");
 }
 
 
