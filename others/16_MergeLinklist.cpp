@@ -121,7 +121,7 @@ ListNode* ReverseList(ListNode* pHead)
     return NewHead;
 }
 
-
+//合并两个链表
 ListNode* MergeList(ListNode* pHead1, ListNode* pHead2)
 {
     if(pHead1 == NULL)
