@@ -1,5 +1,6 @@
 #include <iostream>
 #include <iomanip>
+#include <stdlib.h>
 
 #include "bitree.h"
 
@@ -37,32 +38,22 @@ int CreateTree(BiTree &Bt)
 bool BiTreeEmpty(BiTree Bt)
 {
 	if (!Bt)
-	{
 		return true;
-	}
 	else
-	{
 		return false;
-	}
 }
 
 int BiTreeDepth(BiTree Bt)
 {
 	int lh,rh;
 	if (!Bt)//≈–∂œ ˜ø’
-	{
 		return 0;
-	}
 	lh = BiTreeDepth(Bt->lchild);//µ›πÈ◊Û◊” ˜
 	rh = BiTreeDepth(Bt->rchild);//µ›πÈ”“◊” ˜
 	if (lh >= rh)//∑µªÿ◊Ó¥Û÷µ
-	{
 		return lh;
-	}
 	else
-	{
 		return rh;
-	}
 }
 
 
@@ -70,30 +61,22 @@ BiTree SearchBiTree(BiTree Bt,TElemType e)
 {
 	BiTree p;
 	if (!Bt)// ˜ø’
-	{
 		return NULL;
-	}
 	if (Bt->data == e)
-	{
 		return Bt;
-	}
 	//◊Û◊” ˜∑«ø’£¨≤È’“◊Û◊” ˜
 	if (Bt->lchild)
 	{
 		p = SearchBiTree(Bt->lchild,e);//µ›πÈ≤È’“
 		if (p)
-		{
 			return p;
-		}
 	}
 	//”“◊” ˜∑«ø’£¨≤È’“”“◊” ˜
 	if (Bt->rchild)
 	{
 		p = SearchBiTree(Bt->rchild,e);//µ›πÈ≤È’“
 		if (p)
-		{
 			return p;
-		}
 	}
 }
 

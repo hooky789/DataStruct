@@ -14,3 +14,5 @@ int main()
 	DestroyBiTree(myTree);   //Ïú»ÙÊ÷
 	return 0;
 }
+
+
