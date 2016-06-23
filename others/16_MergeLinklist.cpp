@@ -177,12 +177,7 @@ int main()
 
     lt = MergeList(lt, lt2);
 
-	//ReversPrint(&lt);
-	//lt = ReverseList(lt);
-	
     printList(lt);
-    //ReversPrint(&lt);
-	
     return 0;
 }
 
