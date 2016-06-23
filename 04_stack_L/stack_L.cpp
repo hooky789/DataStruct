@@ -1,5 +1,6 @@
 #include <iostream>
 #include <iomanip>
+#include <stdlib.h>
 #include "stack_L.h"
 
 using namespace std;
