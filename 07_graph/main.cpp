@@ -14,6 +14,6 @@ int main()
 	
 	PrintGraph_M(myGraph);
 	
-	system("pause");
+	//system("pause");
 	return 0;
 }

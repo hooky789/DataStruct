@@ -4,7 +4,7 @@
 
 using namespace std;
 
-void main()
+int main()
 {
 	LinkStack myStack;
 	ElemType num[10] = {0,1,2,3,4,5,6,7,8,9};
@@ -16,8 +16,8 @@ void main()
 		if ( !Push_L(myStack,num[i]))
 		{
 			cout<<"ÈëÕ»´íÎó"<<endl;
-			system("pause");
-			return;
+			//system("pause");
+			return -1;
 		}
 		else
 		{
@@ -34,8 +34,8 @@ void main()
 		if (!Pop_L(myStack,temp))
 		{
 			cout<<"ÈëÕ»´íÎó"<<endl;
-			system("pause");
-			return;
+			//system("pause");
+			return -1;
 		}
 		else
 		{
@@ -45,5 +45,6 @@ void main()
 	}
 	cout<<endl;
 	DestroyStack_L(myStack);
-	system("pause");
+	return 0;
+    //system("pause");
 }

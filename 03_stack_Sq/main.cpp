@@ -4,7 +4,7 @@
 
 using namespace std;
 
-void main()
+int main()
 {
 	SqStack myStack;
 	ElemType num[10] = {0,1,2,3,4,5,6,7,8,9};
@@ -16,8 +16,8 @@ void main()
 		if ( !Push_Sq(myStack,num[i]) )
 		{
 			cout<<"½øÕ»Ê§°Ü"<<endl;
-			system("pause");
-			return;
+			//system("pause");
+			return -1;
 		}
 		else
 		{
@@ -32,8 +32,8 @@ void main()
 		if (!Pop_Sq(myStack,temp))
 		{
 			cout<<"³öÕ»Ê§°Ü"<<endl;
-			system("pause");
-			return;
+			//system("pause");
+			return -1;
 		}
 		else
 		{
@@ -42,5 +42,6 @@ void main()
 	}
 	cout<<endl;
 	DestroyStack_Sq(myStack);
-	system("pause");
+	return 0;
+    //system("pause");
 }
