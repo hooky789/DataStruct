@@ -82,6 +82,7 @@ BTreeNode* Construct(int *preorder, int *inorder, int len)
 	return ConstructionCore(preorder, preorder+len-1, inorder, inorder+len-1);
 }
 
+//层序遍历二叉树
 void LevelTree(BTreeNode *pHead)
 {
     if(!pHead)
