@@ -11,14 +11,13 @@
  * 2.中序遍历的 递归实现和 非递归实现
  * 3.后序遍历的 递归实现和 非递归实现
  * 4.根据两项遍历结果 重构树结构
- *
 */
-
 
 #include<iostream>
 #include <stdlib.h>
 #include <stack>
 #include <deque>
+
 using namespace std;
 
 struct BTreeNode
